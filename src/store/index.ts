@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create, StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 interface GlobalState {
@@ -19,7 +19,7 @@ interface GlobalState {
     setCount: (value: number) => void;
 }
 
-const useStore = (set: any, get: any) => ({
+const useStore: StateCreator<GlobalState> = (set: any, get: any) => ({
     initState: false,
     isLogin: false,
     user: {},
@@ -38,6 +38,8 @@ const useStore = (set: any, get: any) => ({
 });
 
 const useGlobalStore =
-    import.meta.env.VITE_PROFILE !== 'prod' ? create<GlobalState>(devtools(useStore)) : create<GlobalState>(useStore);
+    import.meta.env.VITE_PROFILE !== 'prod'
+        ? create<GlobalState>(devtools(useStore) as StateCreator<GlobalState>)
+        : create<GlobalState>(useStore);
 
 export default useGlobalStore;

@@ -12,7 +12,7 @@ const AppRouter: React.FC = () => {
     // 애플리케이션 최초 로딩 시 initState를 true로 변경
     useEffect(() => {
         setInitState(true);
-    }, []);
+    }, [setInitState]);
 
     return (
         <Router>

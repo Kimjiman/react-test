@@ -1,10 +1,12 @@
 import { lazy } from 'react';
+import { RouteComponent } from '@/types/module';
 
-const components = [{ path: '*', component: lazy(() => import('@/views/error/NotFound')) }];
+const components = [{ path: '*', name: 'notFound', component: lazy(() => import('@/views/error/NotFound')) }];
 
-const routes = components.map(it => ({
+const routes: RouteComponent[] = components.map(it => ({
     path: it.path,
     element: <it.component />,
+    name: it.name,
 }));
 
 export default routes;

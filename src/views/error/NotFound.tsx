@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
     const navigate = useNavigate();
-    let [count, setCount] = useState(5);
+    const [count, setCount] = useState(5);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,7 +16,7 @@ const NotFound = () => {
         }
 
         return () => clearInterval(interval);
-    }, [count]);
+    }, [count, navigate]);
 
     return (
         <div>

@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { RouteComponent } from '@/types/module';
 
 const baseDir = '';
 const components = [
@@ -6,7 +7,7 @@ const components = [
     { path: 'about', name: 'About', component: lazy(() => import('@/views/About')) },
 ];
 
-const routes = components.map(it => ({
+const routes: RouteComponent[] = components.map(it => ({
     path: `${baseDir}/${it.path}`,
     element: <it.component />,
     name: it.name,

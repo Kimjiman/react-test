@@ -16,7 +16,7 @@ instance.interceptors.request.use(
 // 응답 인터셉터
 instance.interceptors.response.use(
     function (response) {
-        let resData = response.data;
+        const resData = response.data;
         if (!resData) {
             return Promise.reject({ message: 'invalid data format' });
         }
