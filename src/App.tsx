@@ -6,12 +6,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import useGlobalStore from '@/store/index';
 
-console.log(routes);
-
-const AppRouter = () => {
-    console.log(import.meta.env.VITE_BASE_URL);
-
-    const setInitState = useGlobalStore(state => state.setInitState);
+const AppRouter: React.FC = () => {
+    const { setInitState } = useGlobalStore();
 
     // 애플리케이션 최초 로딩 시 initState를 true로 변경
     useEffect(() => {

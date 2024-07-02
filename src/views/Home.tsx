@@ -2,13 +2,21 @@ import reactLogo from '@/assets/react.svg';
 import viteLogo from '/vite.svg';
 import '@/App.css';
 import useGlobalStore from '@/store/index';
+import { useEffect } from 'react';
 
-function App() {
+const App: React.FC = () => {
     const { count, setCount } = useGlobalStore();
 
     const increment = () => {
         setCount(count + 1);
     };
+
+    useEffect(() => {
+        console.log('컴포넌트가 화면에 나타남');
+        return () => {
+            console.log('컴포넌트가 화면에서 사라짐');
+        };
+    }, []);
 
     return (
         <>
@@ -30,6 +38,6 @@ function App() {
             <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
         </>
     );
-}
+};
 
 export default App;
