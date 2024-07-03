@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
 import routes from '@/routes/index';
 import errorRoutes from '@/routes/error';
@@ -6,27 +6,33 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import useGlobalStore from '@/store/index';
 
-const AppRouter: React.FC = () => {
+const RouteGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const location = useLocation();
     const { setInitState } = useGlobalStore();
 
-    // 애플리케이션 최초 로딩 시 initState를 true로 변경
     useEffect(() => {
-        setInitState(true);
-    }, [setInitState]);
+        console.log('Navigated to:', location.pathname);
+    }, [location, setInitState]);
 
+    return <>{children}</>;
+};
+
+const AppRouter: React.FC = () => {
     return (
         <Router>
             <Header />
             <main className="contents">
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Routes>
-                        {routes.map((route, index) => (
-                            <Route key={index} path={route.path} element={route.element} />
-                        ))}
-                        {errorRoutes.map((route, index) => (
-                            <Route key={index} path={route.path} element={route.element} />
-                        ))}
-                    </Routes>
+                    <RouteGuard>
+                        <Routes>
+                            {routes.map((route, index) => (
+                                <Route key={index} path={route.path} element={route.element} />
+                            ))}
+                            {errorRoutes.map((route, index) => (
+                                <Route key={index} path={route.path} element={route.element} />
+                            ))}
+                        </Routes>
+                    </RouteGuard>
                 </Suspense>
             </main>
             <Footer />

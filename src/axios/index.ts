@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const instance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
@@ -15,7 +14,7 @@ instance.interceptors.request.use(
 );
 // 응답 인터셉터
 instance.interceptors.response.use(
-    function (response) {
+    function (response: Record<string, any>) {
         const resData = response.data;
         if (!resData) {
             return Promise.reject({ message: 'invalid data format' });
@@ -28,12 +27,10 @@ instance.interceptors.response.use(
         }
         return resData.response;
     },
-    function (error) {
+    function (error: Record<string, any>) {
         const status = error.response?.status;
         let data;
         if (401 === status) {
-            const navigate = useNavigate();
-            navigate('/login', { replace: true });
             data = { status, message: '연결이 끊겼습니다. 다시 로그인해주세요.' };
         } else if (500 === status) {
             data = error.response.data;
