@@ -1,4 +1,4 @@
-import { BaseModel } from './module';
+import { BaseModel } from '@/types/module';
 
 export interface TokenInfo extends BaseModel {
     refreshToken: string;
