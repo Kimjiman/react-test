@@ -8,11 +8,12 @@ const Login = () => {
 
     const goLogin = async () => {
         console.log(`Login ID: ${loginId}, Password: ${password}`);
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         try {
             const res = await api.auth.login(loginId, password);
             localStorage.setItem('accessToken', res?.accessToken);
             localStorage.setItem('refreshToken', res?.refreshToken);
-            console.log(res);
         } catch (ex) {
             console.error(ex);
         }

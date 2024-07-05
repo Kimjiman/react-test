@@ -1,3 +1,5 @@
+// src/store/index.ts
+
 import { GlobalState } from '@/types/module';
 import { create, StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
@@ -9,6 +11,7 @@ const useStore: StateCreator<GlobalState> = (set: any, get: any) => ({
     menu: {},
     count: 0,
     spin: false,
+    requestCount: 0,
 
     getInitState: () => get().initState,
     getIsLogin: () => get().isLogin,
@@ -16,6 +19,7 @@ const useStore: StateCreator<GlobalState> = (set: any, get: any) => ({
     getMenu: () => get().menu,
     getCount: () => get().count,
     getSpin: () => get().spin,
+    getRequestCount: () => get().requestCount,
 
     setInitState: (value: boolean) => set({ initState: value }),
     setIsLogin: (value: boolean) => set({ isLogin: value }),
@@ -23,6 +27,7 @@ const useStore: StateCreator<GlobalState> = (set: any, get: any) => ({
     setMenu: (value: Record<string, any>) => set({ menu: value }),
     setCount: (value: number) => set({ count: value }),
     setSpin: (value: boolean) => set({ spin: value }),
+    setRequestCount: () => (value: number) => set({ requestCount: value }),
 });
 
 const useGlobalStore =

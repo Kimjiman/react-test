@@ -16,6 +16,7 @@ export interface GlobalState extends BaseModel {
     menu: Record<string, any>;
     count: number;
     spin: boolean;
+    requestCount: number;
 
     getInitState: () => boolean;
     getIsLogin: () => boolean;
@@ -23,6 +24,7 @@ export interface GlobalState extends BaseModel {
     getMenu: () => Record<string, any>;
     getCount: () => number;
     getSpin: () => boolean;
+    getRequestCount: () => number;
 
     setInitState: (value: boolean) => void;
     setIsLogin: (value: boolean) => void;
@@ -30,6 +32,7 @@ export interface GlobalState extends BaseModel {
     setMenu: (value: Record<string, any>) => void;
     setCount: (value: number) => void;
     setSpin: (value: boolean) => void;
+    setRequestCount: (value: number) => void;
 }
 
 /** For route */
