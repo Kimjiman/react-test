@@ -5,6 +5,7 @@ import errorRoutes from '@/routes/error';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import useGlobalStore from '@/store/index';
+import Spin from './components/feedback/Spin';
 
 const RouteGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const location = useLocation();
@@ -36,6 +37,7 @@ const AppRouter: React.FC = () => {
                 </Suspense>
             </main>
             <Footer />
+            <Spin />
         </Router>
     );
 };

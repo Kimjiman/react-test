@@ -15,7 +15,7 @@ export default defineConfig({
             '/api': {
                 target: 'localhost:8085', // 실제 API 서버 주소
                 changeOrigin: true,
-                rewrite: path => path.replace(/^\/api/, ''), // 경로 재작성
+                rewrite: (path) => path.replace(/^\/api/, ''), // 경로 재작성
             },
         },
         watch: {

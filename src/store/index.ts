@@ -8,18 +8,21 @@ const useStore: StateCreator<GlobalState> = (set: any, get: any) => ({
     user: {},
     menu: {},
     count: 0,
+    spin: false,
 
     getInitState: () => get().initState,
     getIsLogin: () => get().isLogin,
     getUser: () => get().user,
     getMenu: () => get().menu,
     getCount: () => get().count,
+    getSpin: () => get().spin,
 
     setInitState: (value: boolean) => set({ initState: value }),
     setIsLogin: (value: boolean) => set({ isLogin: value }),
     setUser: (value: Record<string, any>) => set({ user: value }),
     setMenu: (value: Record<string, any>) => set({ menu: value }),
     setCount: (value: number) => set({ count: value }),
+    setSpin: (value: boolean) => set({ spin: value }),
 });
 
 const useGlobalStore =
