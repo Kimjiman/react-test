@@ -1,11 +1,10 @@
 import { axios } from '@/axios/axiosConfig';
-import { FileInfo } from '@/types/fileInfo';
 
 const baseUrl = '/file';
 
 const api = {
     get: async (ids: Array<number>) => {
-        return await axios.get<FileInfo>(`${baseUrl}/download`, { params: { ids: ids } });
+        return await axios.get(`${baseUrl}/download`, { params: { ids: ids } });
     },
 
     upload: async (refPath: string, refId: number, files: Array<File>) => {
