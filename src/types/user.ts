@@ -1,4 +1,4 @@
-import { BaseModel } from '@/types/module';
+import { BaseModel } from '@/types/base';
 
 export interface TokenInfo extends BaseModel {
     refreshToken: string;
@@ -6,8 +6,10 @@ export interface TokenInfo extends BaseModel {
 }
 
 export interface User extends BaseModel {
-    loginId: string;
+    id?: number;
+    loginId?: string;
     password?: string;
-    name: string;
-    tokenInfo: TokenInfo;
+    name?: string;
+    createTime?: string;
+    tokenInfo?: TokenInfo;
 }

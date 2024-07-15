@@ -1,15 +1,9 @@
-export interface BaseModel {
-    id?: number;
-    createTime?: string;
-    createId?: string;
-    updateTime?: string;
-    updateId?: string;
-}
+import { BaseModel } from '@/types/base';
 
 /**
  * For store
  */
-export interface GlobalState extends BaseModel {
+export interface GlobalState {
     initState: boolean;
     isLogin: boolean;
     user: Record<string, any>;
